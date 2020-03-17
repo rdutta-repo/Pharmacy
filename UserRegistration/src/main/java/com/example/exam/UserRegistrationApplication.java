@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
+//**This is Eureka Server to connect with other Clints **//
+
 @EnableEurekaServer
 @SpringBootApplication
 public class UserRegistrationApplication {

@@ -3,7 +3,9 @@ package com.example.exam;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-//test
+
+//**useService is a service to perform CRUD of a single user at a time**//
+
 @EnableEurekaClient
 @SpringBootApplication
 public class SingleUserRegistrationApplication {

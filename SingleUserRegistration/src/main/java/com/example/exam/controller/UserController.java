@@ -2,9 +2,11 @@ package com.example.exam.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.exam.model.UserBean;
 import com.example.exam.repository.UserRepository;
+
+import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -41,18 +45,21 @@ public class UserController {
         return userRepo.save(user);
     }
 
+	//Implemented update method using Lombok Plugin
+	
     @PutMapping("/user/{id}")
     public ResponseEntity < UserBean > updateUser(@PathVariable(value = "id") Long uId,
         @Valid @RequestBody UserBean userDetails) throws ResourceNotFoundException {
         UserBean user = userRepo.findById(uId)
-            .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + uId));
-
+           .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + uId));
         
         user.setF_Name(userDetails.getF_Name());
         user.setL_Name(userDetails.getL_Name());
         user.setEmail_Id(userDetails.getEmail_Id());
         user.setAddress(userDetails.getAddress());
         user.setMobile(userDetails.getMobile());
+    
+        //BeanUtils.copyProperties(userDetails, user);
         
         final UserBean updatedUser = userRepo.save(user);
         return ResponseEntity.ok(updatedUser);

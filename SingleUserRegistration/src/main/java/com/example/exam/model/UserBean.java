@@ -8,13 +8,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import lombok.Getter;
+import lombok.Setter;
+
+/* B-V1
+ * Removed dead code
+ * Removed unused Code as ToString method
+ * Added Lombok Plugin
+ * */
+
 @Entity
 @Table(name = "single_user")
+@Getter
+@Setter
 public class UserBean {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	//@Column(name = "user_id", nullable = false)
 	private long user_Id;
 	
 	@Column(name = "f_Name", nullable = false)
@@ -36,83 +46,5 @@ public class UserBean {
 	@NotBlank(message = "email_Id is mandatory")
 	private String email_Id;
 
-//	public Integer getUser_Id() {
-//		return user_Id;
-//	}
-
-//	public void setUser_Id(Integer user_Id) {
-//		this.user_Id = user_Id;
-//	}
-
-	public String getF_Name() {
-		return f_Name;
-	}
-
-	public void setF_Name(String f_Name) {
-		this.f_Name = f_Name;
-	}
-	
-	public String getL_Name() {
-		return l_Name;
-	}
-
-	public void setL_Name(String l_Name) {
-		this.l_Name = l_Name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Long getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(Long mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getEmail_Id() {
-		return email_Id;
-	}
-
-	public void setEmail_Id(String email_Id) {
-		this.email_Id = email_Id;
-	}
-
-	public UserBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public long getUser_Id() {
-		return user_Id;
-	}
-
-	public void setUser_Id(long user_Id) {
-		this.user_Id = user_Id;
-	}
-
-	@Override
-	public String toString() {
-		return "UserBean [user_Id=" + user_Id + ", f_Name=" + f_Name + ", l_Name=" + l_Name + ", address=" + address
-				+ ", mobile=" + mobile + ", email_Id=" + email_Id + "]";
-	}
-
-//	public UserBean(Integer user_Id, @NotBlank(message = "F_Name is mandatory") String f_Name,
-//			@NotBlank(message = "L_Name is mandatory") String l_Name, String address, Long mobile,
-//			@NotBlank(message = "Email is mandatory") String email_Id) {
-//		super();
-//		this.user_Id = user_Id;
-//		this.f_Name = f_Name;
-//		this.l_Name = l_Name;
-//		this.address = address;
-//		this.mobile = mobile;
-//		this.email_Id = email_Id;
-//	}
-	
+		
 }
